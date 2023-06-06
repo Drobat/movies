@@ -1,6 +1,16 @@
-export default function MovieCard({movie, handleDelete}) {
+import { useContext } from "react";
+import { MovieContext } from "../main";
 
+export default function MovieCard({movie}) {
 
+  const {movies, setMovies} = useContext(MovieContext);
+
+  const handleDelete = (id) =>
+  {
+    const moviesCopy = [...movies]
+    const moviesUpdate = moviesCopy.filter((movie) => movie.id !== id);
+    setMovies(moviesUpdate);
+  }
   return (
     <div>
       <h1>{movie.title}</h1>
