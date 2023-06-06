@@ -1,21 +1,13 @@
-export default function MovieCard(movies, setMovies) {
+export default function MovieCard({movie, handleDelete}) {
 
-const handleDelete = (id) =>
-{
-  const moviesCopy = [...movies]
-  const moviesUpdate = moviesCopy.filter((movie) => movie.id !== id);
-  setMovies(moviesUpdate);
-}
+
   return (
     <div>
-      { movies === null ? "Loading..." : movies.map((movie) => 
-        <div key={movie.id}>
-          <h1>{movie.title}</h1>
+      <h1>{movie.title}</h1>
           <h3>{movie.category}</h3>
-          <p>Like : {movie.likes} Dislike:{movie.dislikes}</p>
+          {/* <p>Like : {movie.likes} <button onClick={() => handleLike(movie.id)}>O</button>
+          Dislike:{movie.dislikes} <button onClick={() => handleDislike(movie.id)}>W</button></p> */}
           <button onClick={() => handleDelete(movie.id)}>X</button>
-          
-          </div>) }
     </div>
   )
 }
