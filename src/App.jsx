@@ -1,13 +1,10 @@
-import MovieCard from "./component/MovieCard.jsx";
+import MovieCard from "./components/MovieCard.jsx";
 import { MovieContext } from "./main.jsx";
 import { useContext } from "react"
 
 
 function App() {
-  const {movies, setMovies} = useContext(MovieContext);
-
-
-
+  const {movies} = useContext(MovieContext);
 
   return (
     <div className="App">
