@@ -16,7 +16,7 @@ export default function MovieCard({movie}) {
     <div>
       <h1>{movie.title}</h1>
           <h3>{movie.category}</h3>
-          <div> <MovieRating id={movie.id} like={movie.likes} dislike={movie.dislikes} /> </div>
+          <div> <MovieRating id={movie.id} likes={movie.likes} dislikes={movie.dislikes} /> </div>
           <button onClick={() => handleDelete(movie.id)}>X</button>
     </div>
   )
