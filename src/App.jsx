@@ -3,15 +3,18 @@ import GetMovies from "./components/GetMovies";
 import { movies$ } from './movies.js';
 import { MovieContext } from "./main";
 import { useQuery } from 'react-query';
-import { QueryClient, QueryClientProvider } from 'react-query';
-
+import MoviesFilter from "./components/MoviesFilter";
+import './input.css';
+import Navbar from "./components/Navbar";
+import { Category } from "./components/Category";
 
 
 function App() {
 
   const [movies, setMovies] = useState([]);
-  const queryClient = new QueryClient();
-
+  const [categories, setCategories] = useState([]);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  
   
 
   const { data, isLoading, isError } = useQuery('movies', async () => {
@@ -35,12 +38,17 @@ function App() {
   const contextValue = {
     movies,
     setMovies,
+    categories,
+    setCategories,
+    isButtonDisabled, 
+    setIsButtonDisabled,
   };
 
   return (
-    <div className="App">
+    <div className='bg-blue-damas h-screen'> 
       <MovieContext.Provider value={contextValue}>
-       <GetMovies />
+      <Navbar />
+      <MoviesFilter />
       </MovieContext.Provider>
       
     </div>

@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-
+import './index.css'
 
 
 export const MovieContext = React.createContext();

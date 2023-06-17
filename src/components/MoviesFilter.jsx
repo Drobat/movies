@@ -1,27 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext} from 'react'
 import { MovieContext } from '../main';
 import MovieCard from './MovieCard';
 
 export default function MoviesFilter() {
-    const {movies, setMovies} = useContext(MovieContext);
-    const [categories, setCategories] = useState([]);
-    const [uniqueCategories, setUniqueCategories] = useState([]);
+    const {movies, categories} = useContext(MovieContext);
+    
 
-    useEffect(() => {
-      const allCategories = movies.map((movie) => movie.category);
-      const uniqueCategories = [...new Set(allCategories)];
-      setUniqueCategories(uniqueCategories);
-    }, [movies]);
-  
-    const handleCategoryChange = (category) => {
-      const index = categories.indexOf(category);
-      if (index > -1) {
-        setCategories(categories.filter((cat) => cat !== category));
-      } else {
-        setCategories([...categories, category]);
-      }
-    };
-  
     const filteredMovies = movies.filter((movie) => {
       if (categories.length === 0) {
         return true;
@@ -31,34 +15,17 @@ export default function MoviesFilter() {
       }
     });
   
+    
     return (
-      <div>
-        <h2>Catégories</h2>
-        <ul>
-          {uniqueCategories.map((category, index) => (
-            <li key={index}>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={categories.includes(category)}
-                  onChange={() => handleCategoryChange(category)}
-                />
-                {category}
-              </label>
-            </li>
-          ))}
-        </ul>
-        <h2>Films</h2>
-   
-      <ul>
+      <div className='p-10'>
+      <div className="grid grid-cols-4 gap-4">
         {filteredMovies.map((movie) => (
-          <li key={movie.id}>
+          <div key={movie.id}>
             <MovieCard movie={movie} />
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
   
       </div>
     );
   };
-
