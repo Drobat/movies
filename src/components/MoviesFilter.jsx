@@ -18,10 +18,10 @@ export default function MoviesFilter() {
     
     return (
       <div className='p-10'>
-      <div className="grid grid-cols-4 gap-4">
+      <div className="flex-col md:grid md:grid-cols-2 md:gap-2 place-items-center">
         {filteredMovies.map((movie) => (
           <div key={movie.id}>
-            <MovieCard movie={movie} />
+            <MovieCard  movie={movie} />
           </div>
         ))}
       </div>
